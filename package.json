@@ -1,0 +1,17 @@
+{
+  "name": "backjoon",
+  "version": "1.0.0",
+  "description": "for backjoon",
+  "main": "index.js",
+  "scripts": {
+    "test": "start",
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.11.25",
+    "typescript": "^5.4.2"
+  }
+}
