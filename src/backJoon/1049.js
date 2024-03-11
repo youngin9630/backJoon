@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const input = fs
-    .readFileSync("example.txt", "utf-8")
+    .readFileSync("/dev/stdin", "utf-8")
     .toString()
     .trim()
     .split("\n");

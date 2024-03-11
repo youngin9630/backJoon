@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 const input = fs
-  .readFileSync("example.txt", "utf-8")
+  .readFileSync("/dev/stdin", "utf-8")
   .toString()
   .trim()
   .split("\n");
@@ -56,5 +56,6 @@ priceArr.forEach((el) => {
     minVal = el;
   }
 });
+
 let result: number = minVal;
 console.log(result);

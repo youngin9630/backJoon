@@ -24,48 +24,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
-const input = fs
-    .readFileSync("example.txt", "utf-8")
+const [n, a, b] = fs
+    .readFileSync("/dev/stdin", "utf-8")
     .toString()
     .trim()
     .split("\n");
-const [n, m] = input[0].split(" ").map((el) => parseInt(el));
-let brandPrice = [];
-for (let i = 0; i < m; i++) {
-    brandPrice.push({
-        packagePrice: parseInt(input[i + 1].split(" ")[0]),
-        signlePrice: parseInt(input[i + 1].split(" ")[1]),
-    });
+const aInputArr = a.trim().split(" ");
+const bInputArr = b.trim().split(" ");
+// transform
+const transformedN = parseInt(n);
+const transformedA = aInputArr.map((el) => parseInt(el));
+const transformedB = bInputArr.map((el) => parseInt(el));
+const _sortArray = (type, arr) => {
+    if (type === "ASC") {
+        return arr.sort((a, b) => a - b);
+    }
+    else if (type === "DESC") {
+        return arr.sort((a, b) => b - a);
+    }
+    else {
+        throw new Error("Invalid type");
+    }
+};
+const sortedA = _sortArray("ASC", transformedA);
+const sortedB = _sortArray("DESC", transformedB);
+let result = 0;
+for (let i = 0; i < transformedN; i++) {
+    result += sortedA[i] * sortedB[i];
 }
-let minPackagePrice = brandPrice[0].packagePrice;
-let minSignlePrice = brandPrice[0].signlePrice;
-brandPrice.forEach((el) => {
-    if (el.packagePrice < minPackagePrice) {
-        minPackagePrice = el.packagePrice;
-    }
-    if (el.signlePrice < minSignlePrice) {
-        minSignlePrice = el.signlePrice;
-    }
-});
-let dividedN = n / 6;
-let dividedNRemain = n % 6;
-let totalOfPackageAndSignlePrice = 0;
-let totalOfSignlePrice = 0;
-let totalOfFloorPrice = 0;
-totalOfPackageAndSignlePrice =
-    minPackagePrice * Math.floor(dividedN) + minSignlePrice * dividedNRemain;
-totalOfSignlePrice = minSignlePrice * n;
-totalOfFloorPrice = minPackagePrice * Math.ceil(dividedN);
-const priceArr = [
-    totalOfPackageAndSignlePrice,
-    totalOfSignlePrice,
-    totalOfFloorPrice,
-];
-let minVal = priceArr[0];
-priceArr.forEach((el) => {
-    if (el < minVal) {
-        minVal = el;
-    }
-});
-let result = minVal;
 console.log(result);
