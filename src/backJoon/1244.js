@@ -55,7 +55,7 @@ const handleSexWoman = (stateOfSwitch, receiveNumber) => {
     }
 };
 const input = fs
-    .readFileSync("example.txt", "utf-8")
+    .readFileSync("/dev/stdin", "utf-8")
     .toString()
     .trim()
     .split("\n");

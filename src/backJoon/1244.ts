@@ -21,6 +21,7 @@ const handleSexWoman = (stateOfSwitch: number[], receiveNumber: number) => {
       if (cnt !== 0) {
         stateOfSwitch[right] = stateOfSwitch[right] === 0 ? 1 : 0;
       }
+
       cnt++;
       left--;
       right++;
@@ -31,7 +32,7 @@ const handleSexWoman = (stateOfSwitch: number[], receiveNumber: number) => {
 };
 
 const input = fs
-  .readFileSync("example.txt", "utf-8")
+  .readFileSync("/dev/stdin", "utf-8")
   .toString()
   .trim()
   .split("\n");
