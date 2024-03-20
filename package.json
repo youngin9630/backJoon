@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.11.25",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   }
 }
