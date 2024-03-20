@@ -33,16 +33,20 @@ const _extractLastElement = (arr: string[], index: number): string[] => {
   return result;
 };
 
-let lastElementArr: string[] = [];
-let index: number = -1;
+const _answer = () => {
+  let lastElementArr: string[] = [];
+  let index: number = -1;
 
-while (studentNumber.length > 0) {
-  lastElementArr = _extractLastElement(studentNumber, index--);
-  if (!_hasDuplicates(lastElementArr)) {
-    break;
-  } else {
-    count++;
+  while (studentNumber.length > 0) {
+    lastElementArr = _extractLastElement(studentNumber, index--);
+    if (!_hasDuplicates(lastElementArr)) {
+      break;
+    } else {
+      count++;
+    }
   }
-}
 
-console.log(count);
+  console.log(count);
+};
+
+_answer();

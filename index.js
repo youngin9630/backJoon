@@ -50,15 +50,18 @@ const _extractLastElement = (arr, index) => {
     }
     return result;
 };
-let lastElementArr = [];
-let index = -1;
-while (studentNumber.length > 0) {
-    lastElementArr = _extractLastElement(studentNumber, index--);
-    if (!_hasDuplicates(lastElementArr)) {
-        break;
+const _answer = () => {
+    let lastElementArr = [];
+    let index = -1;
+    while (studentNumber.length > 0) {
+        lastElementArr = _extractLastElement(studentNumber, index--);
+        if (!_hasDuplicates(lastElementArr)) {
+            break;
+        }
+        else {
+            count++;
+        }
     }
-    else {
-        count++;
-    }
-}
-console.log(count);
+    console.log(count);
+};
+_answer();
