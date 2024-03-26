@@ -41,14 +41,14 @@ const _answer = () => {
   let result: number[] = [];
   for (const num of mArr) {
     if (BinarySearch.binarySearch(nArr, num)) {
-      console.log("1");
+      result.push(1);
     } else {
-      console.log("0");
+      result.push(0);
     }
     // console.log(BinarySearch.binarySearch(nArr, num) ? 1 : 0);
   }
 
-  // console.log(result.join("\n"));
+  console.log(result.join("\n"));
 };
 
 _answer();

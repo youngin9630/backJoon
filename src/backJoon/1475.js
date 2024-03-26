@@ -25,46 +25,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const INPUT_FILE = process.platform === "linux" ? "/dev/stdin" : "example.txt";
-const input = fs
+const numOfDasom = fs
     .readFileSync(INPUT_FILE, "utf-8")
     .trim()
-    .split("\n")
-    .map((str) => str.replace(/\r$/, ""));
-const n = Number(input[0]);
-const m = Number(input[2]);
-const nArr = input[1].split(" ").map(Number);
-const mArr = input[3].split(" ").map(Number);
-class BinarySearch {
-    static binarySearch(arr, target) {
-        let left = 0;
-        let right = arr.length - 1;
-        while (left <= right) {
-            const mid = Math.floor((left + right) / 2);
-            if (arr[mid] === target) {
-                return true;
-            }
-            else if (arr[mid] < target) {
-                left = mid + 1;
+    .toString();
+let numOfOneSet = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+for (let i = 0; i < numOfDasom.length; i++) {
+    const currentNum = numOfDasom[i];
+    if (currentNum === "6" || currentNum === "9") {
+        if (numOfOneSet[6] === 0 && numOfOneSet[9] === 0) {
+            numOfOneSet = numOfOneSet.map((num) => num + 1);
+        }
+        if (numOfOneSet[6] !== 0 || numOfOneSet[9] !== 0) {
+            if (numOfOneSet[6] !== 0) {
+                numOfOneSet[6]--;
             }
             else {
-                right = mid - 1;
+                numOfOneSet[9]--;
             }
         }
-        return false;
+    }
+    else {
+        if (numOfOneSet[parseInt(currentNum)] === 0) {
+            numOfOneSet = numOfOneSet.map((num) => num + 1);
+        }
+        numOfOneSet[parseInt(currentNum)]--;
     }
 }
-nArr.sort((a, b) => a - b);
-const _answer = () => {
-    let result = [];
-    for (const num of mArr) {
-        if (BinarySearch.binarySearch(nArr, num)) {
-            console.log("1");
+const _findMax = (numbers) => {
+    let max = numbers[0];
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i];
         }
-        else {
-            console.log("0");
-        }
-        // console.log(BinarySearch.binarySearch(nArr, num) ? 1 : 0);
     }
-    // console.log(result.join("\n"));
+    return max;
 };
-_answer();
+console.log(_findMax(numOfOneSet));
