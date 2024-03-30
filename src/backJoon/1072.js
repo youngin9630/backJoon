@@ -44,7 +44,7 @@ else {
         const mid = Math.floor((left + right) / 2);
         const nextWinRate = Math.floor((100 * (Y + mid)) / (X + mid));
         if (nextWinRate > currentWinRate) {
-            right = mid - 1;
+            right = mid;
             additionalGames = mid;
         }
         else {

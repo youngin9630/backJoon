@@ -25,31 +25,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const INPUT_FILE = process.platform === "linux" ? "/dev/stdin" : "example.txt";
-const input = fs
-    .readFileSync(INPUT_FILE, "utf-8")
-    .trim()
-    .split(" ")
-    .map((str) => Number(str.replace(/\r$/, "")));
-const X = input[0];
-const Y = input[1];
-const currentWinRate = Math.floor((100 * Y) / X);
-if (currentWinRate >= 99) {
-    console.log(-1);
-}
-else {
-    let additionalGames = 0;
-    let left = 1;
-    let right = 1e9;
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
-        const nextWinRate = Math.floor((100 * (Y + mid)) / (X + mid));
-        if (nextWinRate > currentWinRate) {
-            right = mid - 1;
-            additionalGames = mid;
+const input = fs.readFileSync(INPUT_FILE, "utf-8").trim();
+let x = parseInt(input);
+let count = 0;
+const _answer = () => {
+    while (x > 0) {
+        if (x % 2 === 1) {
+            x--;
+            count++;
         }
-        else {
-            left = mid + 1;
-        }
+        x /= 2;
     }
-    console.log(additionalGames);
-}
+    console.log(count);
+};
+_answer();
